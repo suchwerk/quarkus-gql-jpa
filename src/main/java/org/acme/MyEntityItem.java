@@ -35,4 +35,5 @@ public class MyEntityItem extends PanacheEntity {
     public MyEntity myEntity;
 
     public String name;
+
 }
