@@ -1,7 +1,17 @@
 package org.acme;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.microprofile.graphql.Ignore;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+
 
 
 /**
@@ -25,5 +35,11 @@ import jakarta.persistence.Entity;
  */
 @Entity
 public class MyEntity extends PanacheEntity {
+
     public String field;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "myEntity")
+    @Ignore
+    public List<MyEntityItem> items = new ArrayList<>();
+
 }
